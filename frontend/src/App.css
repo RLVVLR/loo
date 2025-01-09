@@ -1,0 +1,2309 @@
+:root {
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --secondary-color: #ec4899;
+  --success-color: #22c55e;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --background-color: #f8fafc;
+  --card-background: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --max-width: 1200px;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+}
+
+/* Global Styles */
+body {
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-xl);
+  background-color: var(--card-background);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.nav-tab {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-tab.active {
+  color: var(--primary-color);
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.logout-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  background: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Main Content */
+.main-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Toilet Tracker */
+.toilet-tracker {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+.start-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  margin: var(--spacing-xl) 0;
+}
+
+.active-session {
+  text-align: center;
+}
+
+.session-info {
+  margin: var(--spacing-lg) 0;
+}
+
+.warning-message {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  margin: var(--spacing-md) 0;
+}
+
+.confirm-end {
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md);
+  background-color: #f8d7da;
+  border-radius: var(--border-radius);
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  margin-top: var(--spacing-md);
+}
+
+/* Statistics */
+.statistics {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.statistics h2 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+}
+
+.statistics-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.summary-card {
+  background-color: var(--card-background);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.summary-card h3 {
+  color: var(--text-secondary);
+  margin-top: 0;
+}
+
+.summary-value {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.session-card {
+  background-color: var(--card-background);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.session-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.session-header .date {
+  color: var(--text-secondary);
+}
+
+.session-details {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-xs) 0;
+}
+
+.detail-item .label {
+  color: var(--text-secondary);
+}
+
+.detail-item .value {
+  font-weight: 500;
+}
+
+/* Auth Forms */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--spacing-md);
+}
+
+.auth-form {
+  background-color: var(--card-background);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-form h2 {
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-secondary);
+}
+
+.form-group input {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid #e2e8f0;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.error-message {
+  background-color: #fee2e2;
+  color: var(--error-color);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+/* Buttons */
+.button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius);
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.button-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.button-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.button-secondary {
+  background-color: white;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.button-secondary:hover {
+  background-color: var(--background-color);
+}
+
+.auth-switch {
+  margin-top: var(--spacing-lg);
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.switch-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0 var(--spacing-xs);
+}
+
+.switch-button:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .navigation {
+    padding: var(--spacing-sm);
+  }
+
+  .main-content {
+    padding: var(--spacing-md);
+  }
+
+  .start-buttons {
+    flex-direction: column;
+  }
+
+  .statistics-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .session-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+
+  .confirm-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-tabs {
+    gap: var(--spacing-sm);
+  }
+
+  .nav-tab {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+
+  .logout-button {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+
+  .auth-form {
+    padding: var(--spacing-lg);
+  }
+}
+
+/* Activity Selection */
+.activity-selection {
+  text-align: center;
+  padding: var(--spacing-xl);
+  margin: var(--spacing-xl) auto;
+  max-width: 500px;
+}
+
+.activity-selection h2 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+}
+
+.activity-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .activity-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .activity-buttons .button {
+    width: auto;
+    min-width: 150px;
+  }
+}
+
+/* Activity Selection */
+.activity-selection {
+  text-align: center;
+  padding: var(--spacing-xl);
+  margin: var(--spacing-xl) auto;
+  max-width: 800px;
+}
+
+.activity-selection h2 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+  margin: 0 auto;
+}
+
+.button-activity {
+  padding: var(--spacing-md);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+  white-space: normal;
+  background-color: var(--card-background);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.button-activity:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .activity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button-activity {
+    height: auto;
+    min-height: 50px;
+  }
+}
+
+.button-activity.selected {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Main Button Styling */
+.main-loo-button {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.main-loo-button:hover {
+  transform: scale(1.05);
+  background-color: var(--primary-hover);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Active Session Layout */
+.active-session {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl);
+}
+
+.session-sidebar {
+  background-color: var(--background-color);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  position: sticky;
+  top: var(--spacing-xl);
+}
+
+.session-main {
+  flex: 1;
+}
+
+.session-timer {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .active-session {
+    grid-template-columns: 1fr;
+  }
+
+  .main-loo-button {
+    width: 200px;
+    height: 200px;
+    font-size: 1.5rem;
+  }
+}
+
+/* Active Session Layout */
+.active-session {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl);
+}
+
+.session-header {
+  display: flex;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+.timer-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.timer-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+  min-width: 100px;
+}
+
+.timer-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.session-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+.session-actions {
+  grid-column: 1 / -1;
+  margin-top: var(--spacing-lg);
+}
+
+@media (max-width: 1024px) {
+  .session-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .session-header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .activity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Active Session Layout */
+.active-session {
+  padding: var(--spacing-xl);
+}
+
+.session-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  /* margin-bottom: var(--spacing-xl); */
+  margin-bottom: 0;
+}
+
+.timer-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.timer-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+  min-width: 100px;
+}
+
+.timer-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.activity-selection {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.activity-selection h3 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.session-actions {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+}
+
+.button-activity {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+  white-space: normal;
+}
+
+@media (max-width: 768px) {
+  .session-header {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .activity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Active Session Layout */
+.active-session {
+  display: grid;
+  grid-template-columns: 1fr 300px; /* Main content and end button column */
+  gap: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  min-height: 80vh;
+}
+
+.session-main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.session-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.timer-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.timer-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+  min-width: 100px;
+}
+
+.timer-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.activity-selection {
+  text-align: center;
+}
+
+.activity-selection h3 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.button-activity {
+  height: 80px; /* Increased height */
+  font-size: 1.1rem; /* Larger font */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.3;
+  white-space: normal;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+}
+
+.button-activity:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.button-activity.selected {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* End Session Button Column */
+.end-session-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.end-session-button {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: var(--error-color);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.end-session-button:hover {
+  transform: scale(1.05);
+  background-color: #dc2626;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 1024px) {
+  .active-session {
+    grid-template-columns: 1fr;
+  }
+
+  .end-session-column {
+    margin-top: var(--spacing-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .session-header {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .activity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Counter Styles */
+.digital-counter {
+  background: #000;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: 8px;
+  font-family: 'Digital', monospace; /* We'll import a digital font */
+  color: #32ff7e;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+/* Active Session Layout */
+.active-session {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  position: relative;
+}
+
+.session-main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.session-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  width: 100%;
+}
+
+.timer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.timer-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.end-session-button {
+  position: absolute;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: var(--error-color);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* ... rest of your existing CSS ... */
+
+/* Active Session Layout */
+.active-session-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+.end-session-button {
+  position: absolute;
+  top: var(--spacing-xl);
+  left: var(--spacing-xl);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: var(--error-color);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+  z-index: 10;
+}
+
+.end-session-button:hover {
+  transform: scale(1.05);
+  background-color: #dc2626;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.active-session {
+  margin-left: 150px; /* Make space for the button */
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.session-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  width: 100%;
+}
+
+.activity-selection {
+  width: 100%;
+  text-align: center;
+}
+
+/* ... rest of your existing CSS ... */
+
+@media (max-width: 1024px) {
+  .active-session-container {
+    padding: var(--spacing-md);
+  }
+
+  .end-session-button {
+    position: fixed;
+    top: auto;
+    bottom: var(--spacing-xl);
+    left: var(--spacing-xl);
+  }
+
+  .active-session {
+    margin-left: 0;
+  }
+}
+
+/* Active Session Layout */
+.active-session {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.session-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.timer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.timer-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.digital-counter {
+  background: #000;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: 8px;
+  font-family: 'Share Tech Mono', monospace;
+  color: #32ff7e;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.activity-selection {
+  width: 100%;
+  text-align: center;
+}
+
+.activity-selection h3 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.button-activity {
+  height: 80px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.3;
+  white-space: normal;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .session-header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .activity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Active Session Layout */
+.active-session {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.session-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-md); /* Reduced from spacing-xl */
+}
+
+/* Digital Counter Styles */
+.timer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.timer-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.digital-counter {
+  background: #000;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: 8px;
+  font-family: 'Share Tech Mono', monospace;
+  color: #32ff7e;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  min-width: 180px;
+}
+
+/* Activity Selection Styles */
+.activity-selection {
+  width: 100%;
+  text-align: center;
+}
+
+.activity-selection h3 {
+  margin: var(--spacing-md) 0 var(--spacing-lg);
+  color: #000;
+  font-size: 1.8rem;
+  font-family: 'Share Tech Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  background: linear-gradient(180deg, #f0f0f0 0%, #e0e0e0 100%);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Digital-inspired Activity Buttons */
+.button-activity {
+  height: 80px;
+  font-size: 1.1rem;
+  font-family: 'Share Tech Mono', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.3;
+  white-space: normal;
+  padding: var(--spacing-md);
+  background: #1a1a1a;
+  color: #00ff9d;
+  border: 2px solid #333;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.button-activity:hover {
+  background: #2a2a2a;
+  color: #32ff7e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.button-activity.selected {
+  background: #003322;
+  color: #32ff7e;
+  border-color: #00ff9d;
+  box-shadow: 0 0 15px rgba(0, 255, 157, 0.3), inset 0 0 10px rgba(0, 255, 157, 0.2);
+}
+
+@media (max-width: 768px) {
+  .session-header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .activity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-selection h3 {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Active Session Layout */
+.active-session {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1a1a1a;
+  border-radius: var(--border-radius);
+}
+
+.session-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+}
+
+/* Digital Counter Styles */
+.timer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.timer-label {
+  font-weight: 500;
+  color: #888;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.digital-counter {
+  background: #000;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: 8px;
+  font-family: 'Share Tech Mono', monospace;
+  color: #32ff7e;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  min-width: 180px;
+}
+
+/* Activity Selection Styles */
+.activity-selection {
+  width: 100%;
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+}
+
+.activity-selection h3 {
+  margin: var(--spacing-md) 0 var(--spacing-lg);
+  color: #fff;
+  font-size: 1.8rem;
+  font-family: 'Share Tech Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+}
+
+/* Activity Buttons - New Style */
+.button-activity {
+  height: 90px;
+  font-size: 1.1rem;
+  font-family: 'Share Tech Mono', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.3;
+  white-space: normal;
+  padding: var(--spacing-md);
+  background: linear-gradient(145deg, #2a2a2a, #333);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.button-activity::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: 0.5s;
+}
+
+.button-activity:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(145deg, #333, #404040);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.button-activity:hover::before {
+  left: 100%;
+}
+
+.button-activity.selected {
+  background: linear-gradient(145deg, #4a1b41, #6b1b5b);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(107, 27, 91, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 1200px) {
+  .activity-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .session-header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .activity-grid {
+    grid-template-columns: 1fr;
+    padding: 0 var(--spacing-md);
+  }
+
+  .activity-selection h3 {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.main-content {
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.toilet-tracker {
+  max-width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.active-session {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1a1a1a;
+  border-radius: 0;
+  min-height: 100vh;
+}
+
+/* Activity Selection Styles */
+.activity-selection {
+  width: 100%;
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+}
+
+.activity-selection h3 {
+  margin: var(--spacing-md) 0 var(--spacing-lg);
+  color: #fff;
+  font-size: 1.8rem;
+  font-family: 'Share Tech Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  background: none; /* Removed background */
+}
+
+/* ... rest of the CSS remains the same ... */
+
+.main-content {
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.toilet-tracker {
+  max-width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Session screen takes full width and height */
+.active-session {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1a1a1a;
+}
+
+/* Container for the actual content */
+.session-content {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.session-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+}
+
+/* ... rest of the styles remain the same ... */
+
+/* Reset any default margins and paddings */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.main-content {
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.toilet-tracker {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.active-session {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1a1a1a;
+}
+
+.session-content {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ... rest of the styles remain the same ... */
+
+/* Reset any default margins and paddings */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.main-content {
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.toilet-tracker {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.active-session {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: var(--spacing-xl) 0 0 0; /* Added top padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1a1a1a;
+}
+
+.session-content {
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 var(--spacing-xl);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+/* ... rest of the styles remain the same ... */
+
+/* Reset any default margins and paddings */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.main-content {
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.toilet-tracker {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a;
+}
+
+.active-session {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: var(--spacing-xl) 0 0 0;
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+}
+
+.session-content {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* ... rest of the styles remain the same ... */
+
+/* Main Loo Button Container */
+.toilet-tracker {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a;
+}
+
+/* Center the button vertically and horizontally */
+.start-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Polished Main Button */
+.main-loo-button {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #2a2a2a, #333);
+  color: #fff;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.main-loo-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: 0.5s;
+}
+
+.main-loo-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, #333, #404040);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.main-loo-button:hover::before {
+  left: 100%;
+}
+
+/* Reduce top spacing in session screen */
+.active-session {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: var(--spacing-md) 0 0 0; /* Reduced from spacing-xl to spacing-md */
+  display: flex;
+  justify-content: center;
+}
+
+.session-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+}
+
+/* ... rest of the styles remain the same ... */
+
+/* Main Loo Button */
+.main-loo-button {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #4a1b41, #6b1b5b); /* More distinct color */
+  color: #fff;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(107, 27, 91, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  margin-top: 10rem;
+}
+
+.main-loo-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.main-loo-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, #5b2250, #7c2269);
+  box-shadow: 0 12px 40px rgba(107, 27, 91, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.main-loo-button:hover::before {
+  left: 100%;
+}
+
+/* Session Screen */
+.active-session {
+  width: 100%;
+  min-height: 90vh;
+  margin: 0 auto;
+  padding: 0; /* Removed top padding */
+  display: flex;
+  justify-content: center;
+}
+
+.session-content {
+  width: 100%;
+  max-width: 1400px;
+  padding: var(--spacing-sm) var(--spacing-xl); /* Reduced top padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.session-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+}
+
+/* ... rest of the styles remain the same ... */
+
+.out-of-loo-button {
+  position: fixed;
+  top: 6rem; /* Position it below the navigation */
+  right: 2rem;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #dc2626, #991b1b);
+  color: #fff;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+  z-index: 100;
+  box-shadow: 0 8px 32px rgba(220, 38, 38, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.out-of-loo-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, #ef4444, #b91c1c);
+  box-shadow: 0 12px 40px rgba(220, 38, 38, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* First, fix the height issue by ensuring proper containment */
+.toilet-tracker {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a;
+  min-height: 90vh; /* Match active-session height */
+}
+
+.active-session {
+  width: 100%;
+  min-height: 90vh;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Updated Out of Loo button with new color and no line break */
+.out-of-loo-button {
+  position: fixed;
+  top: 6rem;
+  right: 2rem;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffb302, #ff9900);
+  color: #1a1a1a;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 100;
+  box-shadow: 0 8px 32px rgba(255, 179, 2, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.out-of-loo-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, #ffc107, #ffb302);
+  box-shadow: 0 12px 40px rgba(255, 179, 2, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.out-of-loo-button {
+  position: fixed;
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust for perfect vertical centering */
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffb302, #ff9900);
+  color: #1a1a1a;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 100;
+  box-shadow: 0 8px 32px rgba(255, 179, 2, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.out-of-loo-button.left {
+  left: 6rem;
+}
+
+.out-of-loo-button.right {
+  right: 6rem;
+}
+
+.out-of-loo-button:hover {
+  transform: translateY(-50%) scale(1.05);
+  background: linear-gradient(145deg, #ffc107, #ffb302);
+  box-shadow: 0 12px 40px rgba(255, 179, 2, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.session-side-elements {
+  position: fixed;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.out-of-loo-button {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffb302, #ff9900);
+  color: #1a1a1a;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(255, 179, 2, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.out-of-loo-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, #ffc107, #ffb302);
+  box-shadow: 0 12px 40px rgba(255, 179, 2, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.session-side-elements.left {
+  left: 2rem;
+}
+
+.session-side-elements.right {
+  right: 2rem;
+}
+
+.decorative-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255, 179, 2, 0.1), rgba(255, 153, 0, 0.1));
+  border: 2px solid rgba(255, 179, 2, 0.2);
+  box-shadow: inset 0 0 20px rgba(255, 179, 2, 0.1);
+}
+
+.session-header-banner {
+  position: fixed;
+  top: 4rem; /* Space for navigation */
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(145deg, #ffb302, #ff9900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.end-session-banner-button {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #1a1a1a;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.end-session-banner-button:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Adjust active-session to account for banner */
+.active-session {
+  width: 100%;
+  min-height: 90vh;
+  margin: 0 auto;
+  padding: 3rem 0 0 0; /* Added top padding to account for banner */
+  display: flex;
+  justify-content: center;
+}
+
+.floating-end-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffb302, #ff9900);
+  color: #1a1a1a;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 100;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 16px 48px rgba(255, 179, 2, 0.3);
+}
+
+.floating-end-button:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 20px 60px rgba(255, 179, 2, 0.4);
+}
+
+/* Ensure proper spacing at the bottom of content */
+.session-content {
+  padding-bottom: calc(180px + 4rem); /* Height of button + its bottom margin */
+}
+
+.active-session {
+  width: 100%;
+  min-height: 80vh;
+  margin: 0 auto;
+  padding: 3rem 0 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.session-content {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  /* Remove bottom padding since we don't need it anymore */
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.session-summary {
+  max-width: 800px;
+  margin: 3rem auto 0;
+  padding: 2rem;
+  background: #242424;
+  border-radius: var(--border-radius);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.summary-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.summary-header h2 {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 2rem;
+  color: #ffb302;
+  margin-bottom: 1rem;
+}
+
+.summary-details {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius);
+}
+
+.summary-label {
+  font-weight: 500;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.summary-value {
+  font-family: 'Share Tech Mono', monospace;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.summary-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.summary-button {
+  padding: 1rem 2rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.summary-button.primary {
+  background: linear-gradient(145deg, #ffb302, #ff9900);
+  color: #1a1a1a;
+}
+
+.summary-button.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.summary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.session-content {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.session-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+  max-width: 1200px; /* Match activity-grid max-width */
+}
+
+.activity-selection {
+  width: 100%;
+  text-align: center;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Error Message */
+.warning-message {
+  width: 100%;
+  max-width: var(--content-max-width);
+  text-align: center;
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md);
+  color: var(--color-primary);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  background: rgba(255, 179, 2, 0.1);
+  border-radius: var(--border-radius);
+}
+
+/* Activity Selection Container */
+.activity-selection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.session-content {
+  width: 100%;
+  max-width: 1200px; /* Make consistent with activity grid */
+  padding: 0 var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.session-header {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+}
+
+.activity-selection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  width: 100%;
+}
+
+.warning-message {
+  width: 100%;
+  text-align: center;
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md);
+  color: var(--color-primary);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  background: rgba(255, 179, 2, 0.1);
+  border-radius: var(--border-radius);
+}
+
+.activity-grid {
+  margin: 0;
+}
+
+/* Error Message */
+.warning-message {
+  width: 100%;
+  text-align: center;
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md);
+  color: #fff;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+}
+
+/* Header Layout with End Button */
+.session-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+}
+
+.counters-container {
+  display: flex;
+  gap: var(--spacing-xl);
+}
+
+.end-session-button {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 179, 2, 0.15);
+  color: rgba(255, 179, 2, 0.9);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(255, 179, 2, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.end-session-button:hover {
+  background: rgba(255, 179, 2, 0.2);
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .session-header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .counters-container {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .end-session-button {
+    position: static;
+    width: 100px;
+    height: 100px;
+    font-size: 0.9rem;
+  }
+}
+
+.end-session-button {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 179, 2, 0.15);
+  color: rgba(255, 179, 2, 0.9);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(255, 179, 2, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.end-session-button:hover {
+  background: rgba(255, 179, 2, 0.2);
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .session-header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .counters-container {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .end-session-button {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1.1rem;
+    background: #000;
+    border: none;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+}
